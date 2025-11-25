@@ -10,26 +10,56 @@
             margin: 40px;
             line-height: 1.6;
             color: #333;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
         }
-        h1 { color: #2c3e50; }
-        a { color: #3498db; text-decoration: none; }
-        a:hover { text-decoration: underline; }
-        .section { margin: 30px 0; }
+        h1 { 
+            color: #2c3e50;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 10px;
+        }
+        h2 {
+            color: #2c3e50;
+            margin-top: 30px;
+        }
+        a { 
+            color: #3498db; 
+            text-decoration: none; 
+        }
+        a:hover { 
+            text-decoration: underline; 
+        }
+        .section { 
+            margin: 30px 0;
+            padding: 20px;
+            background-color: #f8f9fa;
+            border-radius: 5px;
+        }
+        .emoji {
+            font-size: 1.5em;
+        }
     </style>
 </head>
 <body>
     <h1>Data Science Portfolio</h1>
-    <p>Welcome to my portfolio!</p>
+    <p>Welcome to my portfolio! Here you'll find my research papers, Python projects, and other work.</p>
     
     <div class="section">
-        <h2><a href="./papers">📚 Research Papers</a></h2>
-        <p>Collection of my published papers.</p>
+        <h2><span class="emoji">📚</span> <a href="./papers">Research Papers</a></h2>
+        <p>A collection of my published and working papers on data science topics.</p>
     </div>
     
     <div class="section">
-        <h2><a href="./projects">💻 Python Projects</a></h2>
-        <p>My data science and machine learning projects.</p>
+        <h2><span class="emoji">💻</span> <a href="./projects">Python Projects</a></h2>
+        <p>My data science projects including machine learning models, data analysis, and visualizations.</p>
     </div>
-</body>
-</html>
-Tips
+    
+    <div class="section">
+        <h2>About Me</h2>
+        <p>Data scientist doing data science things.</p>
+    </div>
+    
+    <div class="section">
+        <h2>Contact</h2>
+        <ul>
