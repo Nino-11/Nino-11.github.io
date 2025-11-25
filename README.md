@@ -15,7 +15,7 @@ Data scientist doing data science things.
 ## Contact
 - GitHub: [@Nino-11](https://github.com/Nino-11)
 
-- <!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
     <title>Data Science Portfolio</title>
