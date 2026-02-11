@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Projects | Nino-11</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      color: #2c3e50;
+      background: #e8eaed;
+      min-height: 100vh;
+      padding: 20px;
+    }
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      background: white;
+      border-radius: 20px;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+      overflow: hidden;
+    }
+    .hero {
+      background: linear-gradient(135deg, #434343 0%, #000000 100%);
+      color: white;
+      padding: 60px 40px;
+      text-align: center;
+    }
+    .hero h1 {
+      font-size: 2.6em;
+      margin-bottom: 10px;
+      font-weight: 700;
+      letter-spacing: -1px;
+    }
+    .hero p {
+      font-size: 1.1em;
+      opacity: 0.9;
+      max-width: 750px;
+      margin: 0 auto;
+      font-weight: 300;
+    }
+    .content { padding: 45px 40px; }
+    .top-links {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 25px;
+    }
+    .btn {
+      display: inline-block;
+      text-decoration: none;
+      padding: 10px 16px;
+      border-radius: 8px;
+      border: 1px solid #e0e0e0;
+      background: #fafafa;
+      color: #1a1a1a;
+      font-weight: 600;
+      transition: all 0.25s ease;
+    }
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+      background: white;
+      border-color: #cfcfcf;
+    }
+    .section-title {
+      font-size: 1.6em;
+      font-weight: 700;
+      color: #1a1a1a;
+      margin: 10px 0 18px 0;
+      border-left: 4px solid #505050;
+      padding-left: 14px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
+      gap: 18px;
+    }
+    .card {
+      background: #fafafa;
+      border: 1px solid #e0e0e0;
+      border-radius: 12px;
+      padding: 22px;
+      position: relative;
+      overflow: hidden;
+      transition: all 0.3s ease;
+    }
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 4px;
+      background: linear-gradient(90deg, #505050 0%, #2c2c2c 100%);
+    }
+    .card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 35px rgba(0,0,0,0.10);
+      background: white;
+      border-color: #c0c0c0;
+    }
+    .icon {
+      font-size: 2.2em;
+      margin-bottom: 10px;
+      display: block;
+    }
+    h3 {
+      font-size: 1.22em;
+      margin-bottom: 8px;
+      color: #1a1a1a;
+    }
+    .meta {
+      font-size: 0.95em;
+      color: #777;
+      margin-bottom: 10px;
+    }
+    p {
+      color: #666;
+      font-size: 1.03em;
+      line-height: 1.75;
+      margin-bottom: 14px;
+    }
+    .actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+    .primary {
+      background: rgba(0,0,0,0.85);
+      color: white;
+      border-color: rgba(0,0,0,0.85);
+    }
+    .primary:hover {
+      background: black;
+      border-color: black;
+    }
+    footer {
+      text-align: center;
+      padding: 28px;
+      color: #999;
+      font-size: 0.9em;
+    }
+    @media (max-width: 768px) {
+      .hero { padding: 45px 22px; }
+      .hero h1 { font-size: 2em; }
+      .content { padding: 30px 20px; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="hero">
+      <h1>Projects</h1>
+      <p>Interactive HTML analyses showcasing applied data science workflows, modeling choices, and business-relevant insights.</p>
+    </div>
+
+    <div class="content">
+      <div class="top-links">
+        <a class="btn" href="../">← Back to Home</a>
+        <a class="btn" href="../papers/">View Papers →</a>
+      </div>
+
+      <div class="section-title">Project Gallery</div>
+
+      <div class="grid">
+
+        <div class="card">
+          <span class="icon">📈</span>
+          <h3>Marketing Campaign Analysis</h3>
+          <div class="meta">Business Analytics • KPIs • Insights</div>
+          <p>
+            An end-to-end campaign analysis focused on performance drivers, outcome measurement, and actionable recommendations.
+            Emphasis on clean storytelling and decision-support metrics.
+          </p>
+          <div class="actions">
+            <a class="btn primary" href="Marketing_Campaign_Analysis.html" target="_blank" rel="noopener">Open HTML</a>
+          </div>
+        </div>
+
+        <div class="card">
+          <span class="icon">🏀</span>
+          <h3>Sports Analytics Case Study 1</h3>
+          <div class="meta">Exploratory Analysis • Modeling • Interpretation</div>
+          <p>
+            A structured sports analytics case study demonstrating data preparation, exploratory analysis, and analytical reasoning,
+            with results presented in an easy-to-review notebook format.
+          </p>
+          <div class="actions">
+            <a class="btn primary" href="SportsAnalytics_Case_Study_1.html" target="_blank" rel="noopener">Open HTML</a>
+          </div>
+        </div>
+
+        <div class="card">
+          <span class="icon">📊</span>
+          <h3>Sports Analytics Case Study 2</h3>
+          <div class="meta">Feature Work • Evaluation • Findings</div>
+          <p>
+            A follow-up case study that reinforces reproducible analysis habits and highlights how modeling choices
+            affect interpretation and outcomes.
+          </p>
+          <div class="actions">
+            <a class="btn primary" href="SportsAnalytics_Case_Study_2.html" target="_blank" rel="noopener">Open HTML</a>
+          </div>
+        </div>
+
+        <div class="card">
+          <span class="icon">🧭</span>
+          <h3>Social Survey Analysis</h3>
+          <div class="meta">Real-World Data • Cleaning • Statistical Insight</div>
+          <p>
+            An applied survey analysis emphasizing data quality checks, summary statistics, and interpretive findings—ideal for demonstrating
+            practical analytics and communication clarity.
+          </p>
+          <div class="actions">
+            <a class="btn primary" href="TheSocialSurveyAnalysis_Case_Study.html" target="_blank" rel="noopener">Open HTML</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <footer>
+      <p>&copy; 2024–2026 Data Science Portfolio. Built and deployed on GitHub Pages.</p>
+    </footer>
+  </div>
+</body>
+</html>
