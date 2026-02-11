@@ -104,4 +104,241 @@
         }
         
         .card h2 a {
+            color: #1a1a1a;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .card h2 a:hover {
+            color: #505050;
+        }
+        
+        .card p {
+            color: #666;
+            font-size: 1.05em;
+            line-height: 1.7;
+        }
+
+        /* Small button style used in Featured section */
+        .btn {
+            display: inline-block;
+            text-decoration: none;
+            padding: 10px 16px;
+            border-radius: 8px;
+            border: 1px solid #e0e0e0;
+            background: #fafafa;
+            color: #1a1a1a;
+            font-weight: 600;
+            transition: all 0.25s ease;
+        }
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+            background: white;
+            border-color: #cfcfcf;
+        }
+        .btn-primary {
+            background: rgba(0,0,0,0.85);
+            color: white;
+            border-color: rgba(0,0,0,0.85);
+        }
+        .btn-primary:hover {
+            background: black;
+            border-color: black;
+        }
+
+        .info-section {
+            background: #fafafa;
+            border-radius: 12px;
+            padding: 35px;
+            margin-bottom: 30px;
+            border: 1px solid #e0e0e0;
+        }
+        
+        .info-section h2 {
+            color: #1a1a1a;
+            margin-bottom: 15px;
+            font-size: 1.8em;
+            border-left: 4px solid #505050;
+            padding-left: 15px;
+            font-weight: 600;
+        }
+        
+        .info-section p {
+            color: #666;
+            font-size: 1.05em;
+            line-height: 1.8;
+        }
+
+        /* Featured section */
+        .featured {
+            background: #fafafa;
+            border-radius: 12px;
+            padding: 30px 35px;
+            margin-bottom: 30px;
+            border: 1px solid #e0e0e0;
+            position: relative;
+            overflow: hidden;
+        }
+        .featured::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 4px;
+            background: linear-gradient(90deg, #505050 0%, #2c2c2c 100%);
+        }
+        .featured h2 {
+            color: #1a1a1a;
+            margin-bottom: 10px;
+            font-size: 1.8em;
+            font-weight: 600;
+        }
+        .featured p {
+            color: #666;
+            font-size: 1.05em;
+            line-height: 1.8;
+            margin-bottom: 16px;
+        }
+        .featured-links {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+        
+        .contact-section {
+            background: linear-gradient(135deg, #434343 0%, #000000 100%);
+            color: white;
+            border-radius: 12px;
+            padding: 40px;
+            text-align: center;
+        }
+        
+        .contact-section h2 {
+            color: white;
+            margin-bottom: 25px;
+            font-size: 2em;
+            font-weight: 600;
+        }
+        
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            list-style: none;
+        }
+        
+        .contact-links li {
+            font-size: 1.1em;
+        }
+        
+        .contact-links a {
+            color: white;
+            text-decoration: none;
+            padding: 12px 30px;
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 6px;
+            transition: all 0.3s ease;
+            display: inline-block;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            font-weight: 500;
+        }
+        
+        .contact-links a:hover {
+            background: rgba(255, 255, 255, 0.25);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        footer {
+            text-align: center;
+            padding: 30px;
+            color: #999;
+            font-size: 0.9em;
+        }
+        
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2em;
+            }
+            
+            .hero p {
+                font-size: 1em;
+            }
+            
+            .content {
+                padding: 30px 20px;
+            }
+            
+            .card-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .contact-links {
+                flex-direction: column;
+                gap: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="hero">
+            <h1>Data Science Portfolio</h1>
+            <p>Hi, I'm Nino, welcome to my portfolio! Here you'll find my research papers, Python projects, and other work in data science and machine learning.</p>
+        </div>
+        
+        <div class="content">
+            <div class="card-grid">
+                <div class="card">
+                    <span class="card-icon">📚</span>
+                    <h2><a href="./papers">Research Papers</a></h2>
+                    <p>A collection of my published and working papers on data science topics, including machine learning, statistical analysis, and applied research.</p>
+                </div>
+                
+                <div class="card">
+                    <span class="card-icon">💻</span>
+                    <h2><a href="./projects">Python Projects</a></h2>
+                    <p>My data science projects including machine learning models, data analysis, visualizations, and experimental implementations.</p>
+                </div>
+            </div>
+
+            <!-- Featured work strip -->
+            <div class="featured">
+                <h2>Featured Work</h2>
+                <p>
+                    If you only have a minute, these are the best entry points into my work: an applied research capstone on explainable AI in medical imaging
+                    and a business-focused marketing analytics case study.
+                </p>
+                <div class="featured-links">
+                    <a class="btn btn-primary" href="./papers/Explainable_AI_in_Medical_Diagnostics.pdf" target="_blank" rel="noopener">View Capstone PDF</a>
+                    <a class="btn" href="./projects/Marketing_Campaign_Analysis.html" target="_blank" rel="noopener">Open Marketing Analysis</a>
+                    <a class="btn" href="./projects/">Browse All Projects</a>
+                </div>
+            </div>
+            
+            <div class="info-section">
+                <h2>About Me</h2>
+                <p>I’m a data scientist focused on extracting insight from complex datasets and building predictive models that solve real-world problems. I have experience designing AI models for both research and practical applications, with a particular interest in explainable and trustworthy machine learning. I’m also an avid student of economic game theory and how strategic decision-making shapes real-world systems, from markets to intelligent agents.</p>
+            </div>
+            
+            <div class="contact-section">
+                <h2>Get In Touch</h2>
+                <ul class="contact-links">
+                    <li><a href="https://www.linkedin.com/in/nino-miljkovic-10800627/" target="_blank" rel="noopener">🔗 LinkedIn</a></li>
+                    <li><a href="https://github.com/Nino-11" target="_blank" rel="noopener">💻 GitHub</a></li>
+                    <li><a href="mailto:nino.miljkovic@gmail.com">📫 Email</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <footer>
+            <p>&copy; 2024–2026 Data Science Portfolio. Built and deployed on GitHub Pages.</p>
+        </footer>
+    </div>
+</body>
+</html>
+
+        .card h2 a {
             color: #1a1a
