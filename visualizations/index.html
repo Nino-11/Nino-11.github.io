@@ -1,1 +1,335 @@
-<h1>Interactive Visualizations</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Interactive Visualizations | Nino-11</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #e8eaed;
+            color: #2c3e50;
+            line-height: 1.6;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+            overflow: hidden;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, #434343 0%, #000000 100%);
+            color: white;
+            padding: 60px 40px;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 2.7em;
+            margin-bottom: 12px;
+            letter-spacing: -1px;
+        }
+
+        .hero p {
+            font-size: 1.15em;
+            opacity: 0.9;
+            max-width: 760px;
+            margin: 0 auto;
+            font-weight: 300;
+        }
+
+        .content {
+            padding: 45px 40px;
+        }
+
+        .intro {
+            background: #fafafa;
+            border: 1px solid #e0e0e0;
+            border-radius: 12px;
+            padding: 25px 30px;
+            margin-bottom: 35px;
+        }
+
+        .intro p {
+            color: #666;
+            font-size: 1.05em;
+        }
+
+        .viz-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+            gap: 30px;
+        }
+
+        .viz-card {
+            background: #fafafa;
+            border-radius: 14px;
+            border: 1px solid #e0e0e0;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .viz-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, #505050 0%, #2c2c2c 100%);
+            z-index: 2;
+        }
+
+        .viz-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 14px 38px rgba(0, 0, 0, 0.13);
+            background: white;
+        }
+
+        .preview-link {
+            display: block;
+            text-decoration: none;
+        }
+
+        .preview {
+            width: 100%;
+            height: 230px;
+            object-fit: cover;
+            display: block;
+            border-bottom: 1px solid #e0e0e0;
+            filter: saturate(0.95);
+            transition: transform 0.35s ease, filter 0.35s ease;
+        }
+
+        .viz-card:hover .preview {
+            transform: scale(1.02);
+            filter: saturate(1.05);
+        }
+
+        .viz-body {
+            padding: 28px;
+        }
+
+        .eyebrow {
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            font-size: 0.75em;
+            color: #888;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .viz-body h2 {
+            font-size: 1.55em;
+            margin-bottom: 12px;
+            color: #1a1a1a;
+            line-height: 1.2;
+        }
+
+        .viz-body h2 a {
+            color: #1a1a1a;
+            text-decoration: none;
+        }
+
+        .viz-body h2 a:hover {
+            color: #505050;
+        }
+
+        .viz-body p {
+            color: #666;
+            margin-bottom: 20px;
+            font-size: 1.02em;
+        }
+
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 22px;
+        }
+
+        .tag {
+            font-size: 0.82em;
+            padding: 6px 10px;
+            background: #eeeeee;
+            color: #444;
+            border-radius: 999px;
+            border: 1px solid #dedede;
+        }
+
+        .links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .btn {
+            display: inline-block;
+            text-decoration: none;
+            padding: 10px 16px;
+            border-radius: 8px;
+            border: 1px solid #e0e0e0;
+            background: #fafafa;
+            color: #1a1a1a;
+            font-weight: 600;
+            transition: all 0.25s ease;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+            background: white;
+            border-color: #cfcfcf;
+        }
+
+        .btn-primary {
+            background: rgba(0,0,0,0.85);
+            color: white;
+            border-color: rgba(0,0,0,0.85);
+        }
+
+        .btn-primary:hover {
+            background: black;
+            border-color: black;
+        }
+
+        .back {
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        .back a {
+            text-decoration: none;
+            color: #555;
+            font-weight: 600;
+        }
+
+        .back a:hover {
+            color: #111;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2em;
+            }
+
+            .content {
+                padding: 30px 20px;
+            }
+
+            .viz-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .preview {
+                height: 200px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+
+        <div class="hero">
+            <h1>Interactive Visualizations</h1>
+            <p>Browser-based educational tools designed to build intuition for core machine learning concepts through visual, hands-on exploration.</p>
+        </div>
+
+        <div class="content">
+
+            <div class="intro">
+                <p>
+                    These visualizations are built as interactive learning tools, combining machine learning concepts with real-time exploration.
+                    Each demo is designed to make abstract ideas easier to understand by showing how algorithms behave dynamically.
+                </p>
+            </div>
+
+            <div class="viz-grid">
+
+                <div class="viz-card">
+                    <a class="preview-link" href="https://nino-11.github.io/kmeans-vs-dbscan/" target="_blank" rel="noopener">
+                        <img class="preview" src="https://raw.githubusercontent.com/Nino-11/kmeans-vs-dbscan/main/preview.png" alt="K-Means vs DBSCAN visualization preview">
+                    </a>
+
+                    <div class="viz-body">
+                        <div class="eyebrow">Clustering Algorithms</div>
+
+                        <h2>
+                            <a href="https://nino-11.github.io/kmeans-vs-dbscan/" target="_blank" rel="noopener">
+                                K-Means vs DBSCAN
+                            </a>
+                        </h2>
+
+                        <p>
+                            Interactive comparison of centroid-based and density-based clustering, demonstrating how different algorithms handle non-linear structures, cluster density, and noise.
+                        </p>
+
+                        <div class="tags">
+                            <span class="tag">K-Means</span>
+                            <span class="tag">DBSCAN</span>
+                            <span class="tag">Clustering</span>
+                            <span class="tag">Data Visualization</span>
+                        </div>
+
+                        <div class="links">
+                            <a class="btn btn-primary" href="https://nino-11.github.io/kmeans-vs-dbscan/" target="_blank" rel="noopener">Launch Demo</a>
+                            <a class="btn" href="https://github.com/Nino-11/kmeans-vs-dbscan" target="_blank" rel="noopener">GitHub</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="viz-card">
+                    <a class="preview-link" href="https://nino-11.github.io/gradient-descent/" target="_blank" rel="noopener">
+                        <img class="preview" src="https://raw.githubusercontent.com/Nino-11/gradient-descent/main/preview.png" alt="Gradient descent optimizers visualization preview">
+                    </a>
+
+                    <div class="viz-body">
+                        <div class="eyebrow">Optimization Algorithms</div>
+
+                        <h2>
+                            <a href="https://nino-11.github.io/gradient-descent/" target="_blank" rel="noopener">
+                                Gradient Descent Optimizers
+                            </a>
+                        </h2>
+
+                        <p>
+                            Interactive exploration of SGD, Momentum, RMSProp, and Adam, visualizing how different optimization strategies converge across complex loss landscapes.
+                        </p>
+
+                        <div class="tags">
+                            <span class="tag">SGD</span>
+                            <span class="tag">Momentum</span>
+                            <span class="tag">RMSProp</span>
+                            <span class="tag">Adam</span>
+                        </div>
+
+                        <div class="links">
+                            <a class="btn btn-primary" href="https://nino-11.github.io/gradient-descent/" target="_blank" rel="noopener">Launch Demo</a>
+                            <a class="btn" href="https://github.com/Nino-11/gradient-descent" target="_blank" rel="noopener">GitHub</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="back">
+                <a href="../index.html">← Back to Portfolio</a>
+            </div>
+
+        </div>
+    </div>
+</body>
+</html>
