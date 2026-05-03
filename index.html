@@ -55,7 +55,6 @@
             padding: 50px 40px;
         }
         
-        /* 🔥 ONLY CHANGE IS HERE */
         .card-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -68,7 +67,6 @@
             max-width: 500px;
             margin: 0 auto;
         }
-        /* 🔥 END OF CHANGE */
         
         .card {
             background: #fafafa;
@@ -278,6 +276,12 @@
             
             .card-grid {
                 grid-template-columns: 1fr;
+            }
+
+            .card-grid .card:nth-child(3) {
+                grid-column: auto;
+                max-width: none;
+                margin: 0;
             }
             
             .contact-links {
