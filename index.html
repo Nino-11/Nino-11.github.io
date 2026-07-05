@@ -4,368 +4,438 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Data Science Portfolio | Nino-11</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Serif:wght@500;600;700&display=swap" rel="stylesheet">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        :root {
+            --paper: #ECEEF2;
+            --surface: #ffffff;
+            --surface-2: #F5F7FA;
+            --ink: #0F1B2D;
+            --ink-soft: #33425A;
+            --muted: #64748B;
+            --line: #E4E8EE;
+            --accent: #2B5CE6;
+            --accent-deep: #1E40AF;
+            --radius: 14px;
+            --maxw: 1080px;
+            --shadow-sm: 0 1px 2px rgba(15,27,45,.04), 0 2px 6px rgba(15,27,45,.05);
+            --shadow-md: 0 14px 38px rgba(15,27,45,.12);
         }
-        
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        html { scroll-behavior: smooth; }
+
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: #2c3e50;
-            background: #e8eaed;
+            font-family: 'IBM Plex Sans', system-ui, -apple-system, sans-serif;
+            line-height: 1.65;
+            color: var(--ink-soft);
+            background: var(--paper);
             min-height: 100vh;
-            padding: 20px;
+            padding: 22px;
+            -webkit-font-smoothing: antialiased;
         }
-        
+
         .container {
-            max-width: 1000px;
+            max-width: var(--maxw);
             margin: 0 auto;
-            background: white;
-            border-radius: 20px;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+            background: var(--surface);
+            border-radius: 22px;
+            box-shadow: var(--shadow-md);
             overflow: hidden;
+            border: 1px solid var(--line);
         }
-        
+
+        /* ---------- Hero ---------- */
         .hero {
-            background: linear-gradient(135deg, #434343 0%, #000000 100%);
-            color: white;
-            padding: 60px 40px;
-            text-align: center;
+            position: relative;
+            background: var(--ink);
+            color: #fff;
+            padding: 84px 48px 76px;
+            overflow: hidden;
         }
-        
+        .hero::before {
+            content: '';
+            position: absolute; inset: 0;
+            background-image:
+                linear-gradient(rgba(255,255,255,.055) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,.055) 1px, transparent 1px);
+            background-size: 30px 30px;
+            mask-image: radial-gradient(120% 100% at 50% 0%, #000 40%, transparent 92%);
+            -webkit-mask-image: radial-gradient(120% 100% at 50% 0%, #000 40%, transparent 92%);
+        }
+        .hero::after {
+            content: '';
+            position: absolute; left: 0; right: 0; bottom: 0; height: 3px;
+            background: var(--accent);
+        }
+        .hero-inner { position: relative; max-width: 760px; margin: 0 auto; text-align: center; }
+        .hero .kicker {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: .78rem;
+            letter-spacing: .22em;
+            text-transform: uppercase;
+            color: #8FA6D8;
+            margin-bottom: 22px;
+        }
         .hero h1 {
-            font-size: 3em;
-            margin-bottom: 10px;
-            font-weight: 700;
-            letter-spacing: -1px;
+            font-family: 'IBM Plex Serif', Georgia, serif;
+            font-size: clamp(2.4rem, 5vw, 3.4rem);
+            line-height: 1.08;
+            font-weight: 600;
+            letter-spacing: -.01em;
+            margin-bottom: 20px;
         }
-        
         .hero p {
-            font-size: 1.2em;
-            opacity: 0.9;
-            max-width: 700px;
-            margin: 0 auto;
-            font-weight: 300;
-        }
-        
-        .content {
-            padding: 50px 40px;
-        }
-        
-        .card-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 30px;
-            margin-bottom: 30px;
-        }
-
-        .card-grid .card:nth-child(3) {
-            grid-column: span 2;
-            max-width: 500px;
+            font-size: 1.08rem;
+            line-height: 1.75;
+            color: #C4CEDE;
+            font-weight: 400;
+            max-width: 660px;
             margin: 0 auto;
         }
-        
-        .card {
-            background: #fafafa;
-            border-radius: 12px;
-            padding: 35px;
-            transition: all 0.3s ease;
-            border: 1px solid #e0e0e0;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .card::before {
-            content: '';
+        .hero .annotation {
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 4px;
-            background: linear-gradient(90deg, #505050 0%, #2c2c2c 100%);
-        }
-        
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.12);
-            border-color: #c0c0c0;
-            background: white;
-        }
-        
-        .card-icon {
-            font-size: 3em;
-            margin-bottom: 15px;
-            display: block;
-            filter: grayscale(30%);
-        }
-        
-        .card h2 {
-            color: #1a1a1a;
-            margin-bottom: 15px;
-            font-size: 1.8em;
-            font-weight: 600;
-        }
-        
-        .card h2 a {
-            color: #1a1a1a;
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-        
-        .card h2 a:hover {
-            color: #505050;
-        }
-        
-        .card p {
-            color: #666;
-            font-size: 1.05em;
-            line-height: 1.7;
+            top: 22px; right: 26px;
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: .72rem;
+            letter-spacing: .04em;
+            color: #5C7099;
         }
 
-        .btn {
-            display: inline-block;
-            text-decoration: none;
-            padding: 10px 16px;
-            border-radius: 8px;
-            border: 1px solid #e0e0e0;
-            background: #fafafa;
-            color: #1a1a1a;
-            font-weight: 600;
-            transition: all 0.25s ease;
-        }
-        .btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.08);
-            background: white;
-            border-color: #cfcfcf;
-        }
-        .btn-primary {
-            background: rgba(0,0,0,0.85);
-            color: white;
-            border-color: rgba(0,0,0,0.85);
-        }
-        .btn-primary:hover {
-            background: black;
-            border-color: black;
-        }
+        /* ---------- Layout ---------- */
+        .content { padding: 56px 48px 44px; }
 
-        .info-section {
-            background: #fafafa;
-            border-radius: 12px;
-            padding: 35px;
-            margin-bottom: 30px;
-            border: 1px solid #e0e0e0;
-        }
-        
-        .info-section h2 {
-            color: #1a1a1a;
-            margin-bottom: 15px;
-            font-size: 1.8em;
-            border-left: 4px solid #505050;
-            padding-left: 15px;
-            font-weight: 600;
-        }
-        
-        .info-section p {
-            color: #666;
-            font-size: 1.05em;
-            line-height: 1.8;
-        }
-
-        .featured {
-            background: #fafafa;
-            border-radius: 12px;
-            padding: 30px 35px;
-            margin-bottom: 30px;
-            border: 1px solid #e0e0e0;
-            position: relative;
-            overflow: hidden;
-        }
-        .featured::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0;
-            width: 100%; height: 4px;
-            background: linear-gradient(90deg, #505050 0%, #2c2c2c 100%);
-        }
-        .featured h2 {
-            color: #1a1a1a;
-            margin-bottom: 10px;
-            font-size: 1.8em;
-            font-weight: 600;
-        }
-        .featured p {
-            color: #666;
-            font-size: 1.05em;
-            line-height: 1.8;
-            margin-bottom: 16px;
-        }
-        .featured-links {
+        .section-head {
             display: flex;
-            gap: 12px;
-            flex-wrap: wrap;
+            align-items: baseline;
+            gap: 14px;
+            margin-bottom: 26px;
         }
-        
-        .contact-section {
-            background: linear-gradient(135deg, #434343 0%, #000000 100%);
-            color: white;
+        .section-head .eyebrow {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: .74rem;
+            letter-spacing: .18em;
+            text-transform: uppercase;
+            color: var(--accent-deep);
+            white-space: nowrap;
+        }
+        .section-head .rule { height: 1px; background: var(--line); flex: 1; }
+
+        /* ---------- Nav cards ---------- */
+        .nav-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-bottom: 56px;
+        }
+        .nav-card {
+            display: flex;
+            flex-direction: column;
+            background: var(--surface);
+            border: 1px solid var(--line);
+            border-radius: var(--radius);
+            padding: 28px 26px;
+            text-decoration: none;
+            transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+        }
+        .nav-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-md);
+            border-color: #C9D4E6;
+        }
+        .badge {
+            width: 46px; height: 46px;
+            display: grid; place-items: center;
+            font-size: 1.35rem;
+            background: var(--surface-2);
+            border: 1px solid var(--line);
             border-radius: 12px;
-            padding: 40px;
-            text-align: center;
+            margin-bottom: 18px;
         }
-        
-        .contact-section h2 {
-            color: white;
-            margin-bottom: 25px;
-            font-size: 2em;
+        .nav-card .tag {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: .7rem;
+            letter-spacing: .16em;
+            text-transform: uppercase;
+            color: var(--muted);
+            margin-bottom: 8px;
+        }
+        .nav-card h2 {
+            font-family: 'IBM Plex Serif', Georgia, serif;
+            font-size: 1.3rem;
             font-weight: 600;
+            color: var(--ink);
+            margin-bottom: 10px;
         }
-        
+        .nav-card p { color: var(--muted); font-size: .96rem; line-height: 1.65; flex: 1; }
+        .nav-card .go {
+            margin-top: 18px;
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: .8rem;
+            font-weight: 500;
+            color: var(--accent-deep);
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+        }
+        .nav-card .go .arrow { transition: transform .25s ease; }
+        .nav-card:hover .go .arrow { transform: translateX(4px); }
+
+        /* ---------- Featured ---------- */
+        .featured { margin-bottom: 56px; }
+        .featured .lead {
+            color: var(--ink-soft);
+            font-size: 1.02rem;
+            line-height: 1.8;
+            max-width: 760px;
+            margin-bottom: 24px;
+        }
+        .featured-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 14px;
+        }
+        .flink {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            background: var(--surface-2);
+            border: 1px solid var(--line);
+            border-radius: 11px;
+            padding: 16px 18px;
+            text-decoration: none;
+            color: var(--ink);
+            font-weight: 500;
+            font-size: .96rem;
+            transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease, background .2s ease;
+        }
+        .flink:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-md);
+            background: var(--surface);
+            border-color: #C9D4E6;
+        }
+        .flink .arrow { color: var(--accent); flex: none; transition: transform .2s ease; }
+        .flink:hover .arrow { transform: translate(3px,-3px); }
+        .flink.primary {
+            grid-column: span 3;
+            background: var(--ink);
+            border-color: var(--ink);
+            color: #fff;
+            font-size: 1.02rem;
+        }
+        .flink.primary .arrow { color: #8FA6D8; }
+        .flink.primary:hover { background: #16233A; }
+
+        /* ---------- About ---------- */
+        .about {
+            background: var(--surface-2);
+            border: 1px solid var(--line);
+            border-radius: var(--radius);
+            padding: 34px 36px;
+            margin-bottom: 40px;
+        }
+        .about h2 {
+            font-family: 'IBM Plex Serif', Georgia, serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--ink);
+            margin-bottom: 14px;
+        }
+        .about p { color: var(--ink-soft); font-size: 1.02rem; line-height: 1.85; }
+
+        /* ---------- Contact ---------- */
+        .contact {
+            position: relative;
+            background: var(--ink);
+            color: #fff;
+            border-radius: var(--radius);
+            padding: 46px 40px;
+            text-align: center;
+            overflow: hidden;
+        }
+        .contact::before {
+            content: '';
+            position: absolute; inset: 0;
+            background-image:
+                linear-gradient(rgba(255,255,255,.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,.05) 1px, transparent 1px);
+            background-size: 30px 30px;
+            mask-image: radial-gradient(120% 120% at 50% 0%, #000 30%, transparent 85%);
+            -webkit-mask-image: radial-gradient(120% 120% at 50% 0%, #000 30%, transparent 85%);
+        }
+        .contact .eyebrow {
+            position: relative;
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: .74rem;
+            letter-spacing: .2em;
+            text-transform: uppercase;
+            color: #8FA6D8;
+            margin-bottom: 12px;
+        }
+        .contact h2 {
+            position: relative;
+            font-family: 'IBM Plex Serif', Georgia, serif;
+            font-size: 1.9rem;
+            font-weight: 600;
+            margin-bottom: 26px;
+        }
         .contact-links {
+            position: relative;
             display: flex;
             justify-content: center;
-            gap: 30px;
+            gap: 14px;
             flex-wrap: wrap;
             list-style: none;
         }
-        
-        .contact-links li {
-            font-size: 1.1em;
-        }
-        
         .contact-links a {
-            color: white;
+            color: #fff;
             text-decoration: none;
-            padding: 12px 30px;
-            background: rgba(255, 255, 255, 0.15);
-            border-radius: 6px;
-            transition: all 0.3s ease;
-            display: inline-block;
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 12px 26px;
+            background: rgba(255,255,255,.08);
+            border: 1px solid rgba(255,255,255,.16);
+            border-radius: 9px;
             font-weight: 500;
+            transition: transform .25s ease, background .25s ease, border-color .25s ease;
         }
-        
         .contact-links a:hover {
-            background: rgba(255, 255, 255, 0.25);
+            background: rgba(255,255,255,.16);
+            border-color: rgba(255,255,255,.3);
             transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
         }
-        
+
         footer {
             text-align: center;
             padding: 30px;
-            color: #999;
-            font-size: 0.9em;
+            color: var(--muted);
+            font-size: .85rem;
+            font-family: 'IBM Plex Mono', monospace;
+            letter-spacing: .02em;
         }
-        
-        @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2em;
-            }
-            
-            .hero p {
-                font-size: 1em;
-            }
-            
-            .content {
-                padding: 30px 20px;
-            }
-            
-            .card-grid {
-                grid-template-columns: 1fr;
-            }
 
-            .card-grid .card:nth-child(3) {
-                grid-column: auto;
-                max-width: none;
-                margin: 0;
-            }
-            
-            .contact-links {
-                flex-direction: column;
-                gap: 15px;
-            }
+        a:focus-visible, .flink:focus-visible, .nav-card:focus-visible {
+            outline: 3px solid var(--accent);
+            outline-offset: 3px;
+            border-radius: 8px;
+        }
+
+        @media (max-width: 860px) {
+            .nav-grid { grid-template-columns: 1fr; }
+            .featured-grid { grid-template-columns: 1fr; }
+            .flink.primary { grid-column: auto; }
+        }
+        @media (max-width: 620px) {
+            body { padding: 12px; }
+            .hero { padding: 60px 24px 54px; }
+            .content { padding: 40px 22px 34px; }
+            .about, .contact { padding: 30px 22px; }
+            .hero .annotation { display: none; }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            * { transition: none !important; scroll-behavior: auto; }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <div class="hero">
-            <h1>Data Science Portfolio</h1>
-            <p>Hi, I'm Nino, welcome to my portfolio! While the bulk of my work is done in a professional capacity, which understandably is not shareable, here you'll find some of my publicly available research papers, Python projects, and other work in data science, machine learning, and multimodal AI.</p>
-        </div>
-        
-        <div class="content">
-            <div class="card-grid">
-                <div class="card">
-                    <span class="card-icon">📚</span>
-                    <h2><a href="./papers">Research Papers</a></h2>
-                    <p>A collection of my published and working papers on data science topics, including machine learning, multimodal AI, statistical analysis, and applied research.</p>
-                </div>
-                
-                <div class="card">
-                    <span class="card-icon">💻</span>
-                    <h2><a href="./projects">Python Projects</a></h2>
-                    <p>My data science projects including machine learning models, data analysis, visualizations, and experimental implementations.</p>
-                </div>
+        <header class="hero">
+            <span class="annotation">nino-11.github.io</span>
+            <div class="hero-inner">
+                <p class="kicker">Data Science · Machine Learning · Multimodal AI</p>
+                <h1>Data Science Portfolio</h1>
+                <p>Hi, I'm Nino, welcome to my portfolio! While the bulk of my work is done in a professional capacity, which understandably is not shareable, here you'll find some of my publicly available research papers, Python projects, and other work in data science, machine learning, and multimodal AI.</p>
+            </div>
+        </header>
 
-                <div class="card">
-                    <span class="card-icon">📊</span>
-                    <h2><a href="./visualizations">Interactive Visualizations</a></h2>
-                    <p>Browser-based educational tools that build intuition for core machine learning concepts through interactive visual explanations.</p>
-                </div>
+        <main class="content">
+
+            <div class="section-head">
+                <span class="eyebrow">Explore</span>
+                <span class="rule"></span>
             </div>
 
-            <div class="featured">
-                <h2>Featured Work</h2>
-                <p>
+            <div class="nav-grid">
+                <a class="nav-card" href="./papers">
+                    <span class="badge">📚</span>
+                    <span class="tag">Writing</span>
+                    <h2>Research Papers</h2>
+                    <p>A collection of my published and working papers on data science topics, including machine learning, multimodal AI, statistical analysis, and applied research.</p>
+                    <span class="go">Browse papers <span class="arrow">→</span></span>
+                </a>
+
+                <a class="nav-card" href="./projects">
+                    <span class="badge">💻</span>
+                    <span class="tag">Code</span>
+                    <h2>Python Projects</h2>
+                    <p>My data science projects including machine learning models, data analysis, visualizations, and experimental implementations.</p>
+                    <span class="go">View projects <span class="arrow">→</span></span>
+                </a>
+
+                <a class="nav-card" href="./visualizations">
+                    <span class="badge">📊</span>
+                    <span class="tag">Interactive</span>
+                    <h2>Interactive Visualizations</h2>
+                    <p>Browser-based educational tools that build intuition for core machine learning concepts through interactive visual explanations.</p>
+                    <span class="go">Launch demos <span class="arrow">→</span></span>
+                </a>
+            </div>
+
+            <section class="featured">
+                <div class="section-head">
+                    <span class="eyebrow">Featured Work</span>
+                    <span class="rule"></span>
+                </div>
+                <p class="lead">
                     If you only have a minute, these projects represent the breadth of my work:
                     published research in multimodal AI and unstructured data systems, applied research in explainable AI,
                     deep learning time-series forecasting for business planning, strategic systems thinking through game theory,
                     practical marketing analytics, and a Retrieval-Augmented Generation (RAG) system for grounded LLM applications.
                 </p>
-                <div class="featured-links">
-                    <a class="btn btn-primary" href="https://www.preprints.org/manuscript/202604.1121" target="_blank" rel="noopener">
-                        Multimodal AI Publication
+                <div class="featured-grid">
+                    <a class="flink primary" href="https://www.preprints.org/manuscript/202604.1121" target="_blank" rel="noopener">
+                        <span>Multimodal AI Publication</span><span class="arrow">↗</span>
                     </a>
-                    <a class="btn" href="./papers/Explainable_AI_in_Medical_Diagnostics.pdf" target="_blank" rel="noopener">
-                        Explainable AI in Diagnostics
+                    <a class="flink" href="./papers/Explainable_AI_in_Medical_Diagnostics.pdf" target="_blank" rel="noopener">
+                        <span>Explainable AI in Diagnostics</span><span class="arrow">↗</span>
                     </a>
-                    <a class="btn" href="./papers/Stability_and_Fairness_in_Strategic_Systems.pdf" target="_blank" rel="noopener">
-                        Nash & Shapley Paper
+                    <a class="flink" href="./papers/Stability_and_Fairness_in_Strategic_Systems.pdf" target="_blank" rel="noopener">
+                        <span>Nash &amp; Shapley Paper</span><span class="arrow">↗</span>
                     </a>
-                    <a class="btn" href="./projects/Sales_Forecast_with_NeuralForecast.html" target="_blank" rel="noopener">
-                        Sales Forecast (NHITS)
+                    <a class="flink" href="./projects/Sales_Forecast_with_NeuralForecast.html" target="_blank" rel="noopener">
+                        <span>Sales Forecast (NHITS)</span><span class="arrow">↗</span>
                     </a>
-                    <a class="btn" href="./projects/Marketing_Campaign_Analysis.html" target="_blank" rel="noopener">
-                        Marketing Analysis
+                    <a class="flink" href="./projects/Marketing_Campaign_Analysis.html" target="_blank" rel="noopener">
+                        <span>Marketing Analysis</span><span class="arrow">↗</span>
                     </a>
-                    <a class="btn" href="https://github.com/Nino-11/rag-knowledge-assistant" target="_blank" rel="noopener">
-                        RAG Knowledge Assistant
+                    <a class="flink" href="https://github.com/Nino-11/rag-knowledge-assistant" target="_blank" rel="noopener">
+                        <span>RAG Knowledge Assistant</span><span class="arrow">↗</span>
                     </a>
                 </div>
-            </div>
+            </section>
 
-            <div class="info-section">
+            <section class="about">
                 <h2>About Me</h2>
                 <p>I’m a data scientist focused on extracting insight from complex datasets and building predictive models that solve real-world problems. I have experience designing AI models for both research and practical applications, with a particular interest in explainable, multimodal, and trustworthy machine learning. I’m also an avid student of economic game theory and how strategic decision-making shapes real-world systems, from markets to intelligent agents.</p>
-            </div>
-            
-            <div class="contact-section">
-                <h2>Get In Touch</h2>
+            </section>
+
+            <section class="contact">
+                <p class="eyebrow">Get in touch</p>
+                <h2>Let’s connect</h2>
                 <ul class="contact-links">
                     <li><a href="https://www.linkedin.com/in/nino-miljkovic-10800627/" target="_blank" rel="noopener">🔗 LinkedIn</a></li>
                     <li><a href="https://github.com/Nino-11" target="_blank" rel="noopener">💻 GitHub</a></li>
                     <li><a href="mailto:nino.miljkovic@gmail.com">📫 Email</a></li>
                 </ul>
-            </div>
-        </div>
-        
+            </section>
+        </main>
+
         <footer>
-            <p>&copy; Data Science Portfolio. Built and deployed on GitHub Pages.</p>
+            <p>© Data Science Portfolio · Built and deployed on GitHub Pages</p>
         </footer>
     </div>
 </body>
