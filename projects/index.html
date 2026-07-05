@@ -4,289 +4,303 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Projects | Nino-11</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Serif:wght@500;600;700&display=swap" rel="stylesheet">
   <style>
+    :root {
+      --paper: #ECEEF2;
+      --surface: #ffffff;
+      --surface-2: #F5F7FA;
+      --ink: #0F1B2D;
+      --ink-soft: #33425A;
+      --muted: #64748B;
+      --line: #E4E8EE;
+      --accent: #2B5CE6;
+      --accent-deep: #1E40AF;
+      --radius: 14px;
+      --maxw: 1080px;
+      --shadow-md: 0 14px 38px rgba(15,27,45,.12);
+    }
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      line-height: 1.6;
-      color: #2c3e50;
-      background: #e8eaed;
+      font-family: 'IBM Plex Sans', system-ui, -apple-system, sans-serif;
+      line-height: 1.65;
+      color: var(--ink-soft);
+      background: var(--paper);
       min-height: 100vh;
-      padding: 20px;
+      padding: 22px;
+      -webkit-font-smoothing: antialiased;
     }
     .container {
-      max-width: 1000px;
+      max-width: var(--maxw);
       margin: 0 auto;
-      background: white;
-      border-radius: 20px;
-      box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+      background: var(--surface);
+      border-radius: 22px;
+      box-shadow: var(--shadow-md);
       overflow: hidden;
+      border: 1px solid var(--line);
     }
     .hero {
-      background: linear-gradient(135deg, #434343 0%, #000000 100%);
-      color: white;
-      padding: 60px 40px;
+      position: relative;
+      background: var(--ink);
+      color: #fff;
+      padding: 66px 48px 60px;
+      overflow: hidden;
       text-align: center;
+    }
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,.055) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.055) 1px, transparent 1px);
+      background-size: 30px 30px;
+      mask-image: radial-gradient(120% 100% at 50% 0%, #000 40%, transparent 92%);
+      -webkit-mask-image: radial-gradient(120% 100% at 50% 0%, #000 40%, transparent 92%);
+    }
+    .hero::after {
+      content: '';
+      position: absolute; left: 0; right: 0; bottom: 0; height: 3px;
+      background: var(--accent);
+    }
+    .hero-inner { position: relative; max-width: 760px; margin: 0 auto; }
+    .hero .kicker {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: .76rem; letter-spacing: .2em; text-transform: uppercase;
+      color: #8FA6D8; margin-bottom: 16px;
     }
     .hero h1 {
-      font-size: 2.6em;
-      margin-bottom: 10px;
-      font-weight: 700;
-      letter-spacing: -1px;
+      font-family: 'IBM Plex Serif', Georgia, serif;
+      font-size: clamp(2.1rem, 4.4vw, 2.9rem);
+      font-weight: 600; letter-spacing: -.01em; margin-bottom: 14px; line-height: 1.1;
     }
-    .hero p {
-      font-size: 1.1em;
-      opacity: 0.9;
-      max-width: 750px;
-      margin: 0 auto;
-      font-weight: 300;
-    }
-    .content { padding: 45px 40px; }
-    .top-links {
-      display: flex;
-      gap: 12px;
-      flex-wrap: wrap;
-      margin-bottom: 25px;
-    }
-    .btn {
-      display: inline-block;
+    .hero p { font-size: 1.04rem; color: #C4CEDE; max-width: 640px; margin: 0 auto; line-height: 1.75; }
+
+    .content { padding: 40px 48px 44px; }
+
+    .top-links { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 34px; }
+    .navbtn {
+      display: inline-flex; align-items: center; gap: 8px;
       text-decoration: none;
-      padding: 10px 16px;
-      border-radius: 8px;
-      border: 1px solid #e0e0e0;
-      background: #fafafa;
-      color: #1a1a1a;
-      font-weight: 600;
-      transition: all 0.25s ease;
+      padding: 9px 15px; border-radius: 9px;
+      border: 1px solid var(--line); background: var(--surface-2);
+      color: var(--ink); font-weight: 500; font-size: .9rem;
+      font-family: 'IBM Plex Mono', monospace; letter-spacing: .01em;
+      transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease, background .2s ease;
     }
-    .btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 10px 25px rgba(0,0,0,0.08);
-      background: white;
-      border-color: #cfcfcf;
+    .navbtn:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); background: var(--surface); border-color: #C9D4E6; }
+
+    .section-head { display: flex; align-items: baseline; gap: 14px; margin-bottom: 26px; }
+    .section-head .eyebrow {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: .74rem; letter-spacing: .18em; text-transform: uppercase;
+      color: var(--accent-deep); white-space: nowrap;
     }
-    .section-title {
-      font-size: 1.6em;
-      font-weight: 700;
-      color: #1a1a1a;
-      margin: 10px 0 18px 0;
-      border-left: 4px solid #505050;
-      padding-left: 14px;
-    }
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
-      gap: 18px;
-    }
+    .section-head .rule { height: 1px; background: var(--line); flex: 1; }
+
+    .grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
+
     .card {
-      background: #fafafa;
-      border: 1px solid #e0e0e0;
-      border-radius: 12px;
-      padding: 22px;
-      position: relative;
-      overflow: hidden;
-      transition: all 0.3s ease;
+      display: flex; flex-direction: column;
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 26px;
+      transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
     }
-    .card::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0;
-      width: 100%; height: 4px;
-      background: linear-gradient(90deg, #505050 0%, #2c2c2c 100%);
-    }
-    .card:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 12px 35px rgba(0,0,0,0.10);
-      background: white;
-      border-color: #c0c0c0;
-    }
+    .card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); border-color: #C9D4E6; }
     .icon {
-      font-size: 2.2em;
-      margin-bottom: 10px;
-      display: block;
+      width: 44px; height: 44px; display: grid; place-items: center;
+      font-size: 1.3rem; background: var(--surface-2);
+      border: 1px solid var(--line); border-radius: 11px; margin-bottom: 16px;
     }
-    h3 {
-      font-size: 1.22em;
-      margin-bottom: 8px;
-      color: #1a1a1a;
+    .card h3 {
+      font-family: 'IBM Plex Serif', Georgia, serif;
+      font-size: 1.22rem; font-weight: 600; color: var(--ink); margin-bottom: 10px; line-height: 1.25;
     }
     .meta {
-      font-size: 0.95em;
-      color: #777;
-      margin-bottom: 10px;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: .72rem; letter-spacing: .04em; color: var(--muted);
+      margin-bottom: 14px; line-height: 1.6;
     }
-    p {
-      color: #666;
-      font-size: 1.03em;
-      line-height: 1.75;
-      margin-bottom: 14px;
+    .card p { color: var(--muted); font-size: .96rem; line-height: 1.7; margin-bottom: 20px; flex: 1; }
+
+    .actions { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+    .btn {
+      display: inline-flex; align-items: center; gap: 7px;
+      text-decoration: none; padding: 9px 15px; border-radius: 9px;
+      border: 1px solid var(--line); background: var(--surface-2);
+      color: var(--ink); font-weight: 500; font-size: .88rem;
+      transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease, background .2s ease;
     }
-    .actions {
-      display: flex;
-      gap: 12px;
-      flex-wrap: wrap;
-      align-items: center;
+    .btn:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); background: var(--surface); border-color: #C9D4E6; }
+    .btn .arrow { color: var(--accent); font-size: .9em; }
+    .btn.primary {
+      background: var(--ink); color: #fff; border-color: var(--ink);
     }
-    .primary {
-      background: rgba(0,0,0,0.85);
-      color: white;
-      border-color: rgba(0,0,0,0.85);
-    }
-    .primary:hover {
-      background: black;
-      border-color: black;
-    }
+    .btn.primary .arrow { color: #8FA6D8; }
+    .btn.primary:hover { background: #16233A; }
+
     footer {
-      text-align: center;
-      padding: 28px;
-      color: #999;
-      font-size: 0.9em;
+      text-align: center; padding: 30px; color: var(--muted);
+      font-size: .85rem; font-family: 'IBM Plex Mono', monospace; letter-spacing: .02em;
     }
-    @media (max-width: 768px) {
-      .hero { padding: 45px 22px; }
-      .hero h1 { font-size: 2em; }
-      .content { padding: 30px 20px; }
+    a:focus-visible, .card:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; border-radius: 8px; }
+
+    @media (max-width: 820px) { .grid { grid-template-columns: 1fr; } }
+    @media (max-width: 620px) {
+      body { padding: 12px; }
+      .hero { padding: 50px 24px 46px; }
+      .content { padding: 32px 22px 34px; }
     }
+    @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
   </style>
 </head>
 
 <body>
   <div class="container">
-    <div class="hero">
-      <h1>Projects</h1>
-      <p>Interactive HTML analyses showcasing applied data science workflows, modeling choices, and business-relevant insights.</p>
-    </div>
+    <header class="hero">
+      <div class="hero-inner">
+        <p class="kicker">Applied Data Science</p>
+        <h1>Projects</h1>
+        <p>Interactive HTML analyses showcasing applied data science workflows, modeling choices, and business-relevant insights.</p>
+      </div>
+    </header>
 
-    <div class="content">
+    <main class="content">
       <div class="top-links">
-        <a class="btn" href="../">← Back to Home</a>
-        <a class="btn" href="../papers/">View Papers →</a>
+        <a class="navbtn" href="../">← Home</a>
+        <a class="navbtn" href="../papers/">Papers →</a>
       </div>
 
-      <div class="section-title">Project Gallery</div>
+      <div class="section-head">
+        <span class="eyebrow">Project Gallery</span>
+        <span class="rule"></span>
+      </div>
 
       <div class="grid">
-        
-  <!-- GLOBAL DATA CENTER SUSTAINABILITY -->
-  <div class="card">
-    <span class="icon">🌱</span>
-    <h3>Global Data Center Sustainability Analysis</h3>
-    <div class="meta">Machine Learning • Sustainability • Green AI • XGBoost</div>
-    <p>
-      Built the full analytical notebook behind the “Toward Sustainable Artificial Intelligence” paper.
-      This project explores global data center growth, renewable energy adoption, infrastructure scale,
-      and sustainability patterns using data cleaning, feature engineering, EDA, clustering, regression,
-      and machine learning model evaluation.
-    </p>
-    <div class="actions">
-      <a class="btn primary" href="https://github.com/Nino-11/global-data-center-sustainability-analysis" target="_blank" rel="noopener">View on GitHub</a>
-      <a class="btn" href="https://github.com/Nino-11/global-data-center-sustainability-analysis/blob/main/Toward_Sustainable_Artificial_Intelligence.ipynb" target="_blank" rel="noopener">Open Notebook</a>
-      <a class="btn" href="../papers/Toward_Sustainable_Artificial_Intelligence.pdf" target="_blank" rel="noopener">Research Paper</a>
-    </div>
-  </div>
 
-  <!-- SALES FORECAST -->
-  <div class="card">
-    <span class="icon">📊</span>
-    <h3>Sales Forecasting with Neural Networks (NHITS)</h3>
-    <div class="meta">Time Series • Deep Learning • NeuralForecast</div>
-    <p>
-      Implemented advanced neural time-series forecasting using the NHITS model from the NeuralForecast package. 
-      This project demonstrates an end-to-end workflow including preprocessing, train-validation splitting, 
-      model configuration, hyperparameter tuning, and performance evaluation for business-oriented sales forecasting.
-    </p>
-    <div class="actions">
-      <a class="btn primary" href="Sales_Forecast_with_NeuralForecast.html" target="_blank" rel="noopener">Open HTML</a>
-    </div>
-  </div>
+        <!-- GLOBAL DATA CENTER SUSTAINABILITY -->
+        <div class="card">
+          <span class="icon">🌱</span>
+          <h3>Global Data Center Sustainability Analysis</h3>
+          <div class="meta">Machine Learning • Sustainability • Green AI • XGBoost</div>
+          <p>
+            Built the full analytical notebook behind the “Toward Sustainable Artificial Intelligence” paper.
+            This project explores global data center growth, renewable energy adoption, infrastructure scale,
+            and sustainability patterns using data cleaning, feature engineering, EDA, clustering, regression,
+            and machine learning model evaluation.
+          </p>
+          <div class="actions">
+            <a class="btn primary" href="https://github.com/Nino-11/global-data-center-sustainability-analysis" target="_blank" rel="noopener">View on GitHub <span class="arrow">↗</span></a>
+            <a class="btn" href="https://github.com/Nino-11/global-data-center-sustainability-analysis/blob/main/Toward_Sustainable_Artificial_Intelligence.ipynb" target="_blank" rel="noopener">Open Notebook <span class="arrow">↗</span></a>
+            <a class="btn" href="../papers/Toward_Sustainable_Artificial_Intelligence.pdf" target="_blank" rel="noopener">Research Paper <span class="arrow">↗</span></a>
+          </div>
+        </div>
 
-  <!-- RAG PROJECT -->
-  <div class="card">
-    <span class="icon">🤖</span>
-    <h3>RAG Knowledge Assistant</h3>
-    <div class="meta">LLM Application • Retrieval-Augmented Generation • Python</div>
-    <p>
-      Built a Retrieval-Augmented Generation (RAG) system that combines document retrieval with large language models
-      to generate context-aware, grounded responses. This project demonstrates end-to-end AI system design, including
-      document ingestion, embedding-based retrieval, prompt orchestration, and user-facing question answering.
-    </p>
-    <div class="actions">
-      <a class="btn primary" href="https://github.com/Nino-11/rag-knowledge-assistant" target="_blank" rel="noopener">View on GitHub</a>
-    </div>
-  </div>
+        <!-- SALES FORECAST -->
+        <div class="card">
+          <span class="icon">📊</span>
+          <h3>Sales Forecasting with Neural Networks (NHITS)</h3>
+          <div class="meta">Time Series • Deep Learning • NeuralForecast</div>
+          <p>
+            Implemented advanced neural time-series forecasting using the NHITS model from the NeuralForecast package.
+            This project demonstrates an end-to-end workflow including preprocessing, train-validation splitting,
+            model configuration, hyperparameter tuning, and performance evaluation for business-oriented sales forecasting.
+          </p>
+          <div class="actions">
+            <a class="btn primary" href="Sales_Forecast_with_NeuralForecast.html" target="_blank" rel="noopener">Open HTML <span class="arrow">↗</span></a>
+          </div>
+        </div>
 
-  <!-- CO-OCCURRENCE -->
-  <div class="card">
-    <span class="icon">🧺</span>
-    <h3>Item Co-Occurrence Analysis (Market Basket Analytics)</h3>
-    <div class="meta">Association Rules • Behavioral Analytics • Network Visualization</div>
-    <p>
-      Explored item co-purchase behavior using synthetic retail transaction data.
-      Constructed co-occurrence matrices and calculated support, confidence, lift,
-      and Jaccard similarity to quantify product relationships.
-    </p>
-    <div class="actions">
-      <a class="btn primary" href="co-occurrence_analysis.html" target="_blank" rel="noopener">Open HTML</a>
-    </div>
-  </div>
+        <!-- RAG PROJECT -->
+        <div class="card">
+          <span class="icon">🤖</span>
+          <h3>RAG Knowledge Assistant</h3>
+          <div class="meta">LLM Application • Retrieval-Augmented Generation • Python</div>
+          <p>
+            Built a Retrieval-Augmented Generation (RAG) system that combines document retrieval with large language models
+            to generate context-aware, grounded responses. This project demonstrates end-to-end AI system design, including
+            document ingestion, embedding-based retrieval, prompt orchestration, and user-facing question answering.
+          </p>
+          <div class="actions">
+            <a class="btn primary" href="https://github.com/Nino-11/rag-knowledge-assistant" target="_blank" rel="noopener">View on GitHub <span class="arrow">↗</span></a>
+          </div>
+        </div>
 
-  <!-- MARKETING -->
-  <div class="card">
-    <span class="icon">📈</span>
-    <h3>Marketing Campaign Analysis</h3>
-    <div class="meta">Business Analytics • KPIs • Insights</div>
-    <p>
-      An end-to-end campaign analysis focused on customer acquisition and retention and actionable recommendations.
-    </p>
-    <div class="actions">
-      <a class="btn primary" href="Marketing_Campaign_Analysis.html" target="_blank" rel="noopener">Open HTML</a>
-    </div>
-  </div>
+        <!-- CO-OCCURRENCE -->
+        <div class="card">
+          <span class="icon">🧺</span>
+          <h3>Item Co-Occurrence Analysis (Market Basket Analytics)</h3>
+          <div class="meta">Association Rules • Behavioral Analytics • Network Visualization</div>
+          <p>
+            Explored item co-purchase behavior using synthetic retail transaction data.
+            Constructed co-occurrence matrices and calculated support, confidence, lift,
+            and Jaccard similarity to quantify product relationships.
+          </p>
+          <div class="actions">
+            <a class="btn primary" href="co-occurrence_analysis.html" target="_blank" rel="noopener">Open HTML <span class="arrow">↗</span></a>
+          </div>
+        </div>
 
-  <!-- SPORTS 1 -->
-  <div class="card">
-    <span class="icon">🏀</span>
-    <h3>Sports Analytics Case Study 1</h3>
-    <div class="meta">Exploratory Analysis • Modeling • Interpretation</div>
-    <p>
-      A structured sports analytics case study demonstrating data preparation and analytical reasoning.
-    </p>
-    <div class="actions">
-      <a class="btn primary" href="SportsAnalytics_Case_Study_1.html" target="_blank" rel="noopener">Open HTML</a>
-    </div>
-  </div>
+        <!-- MARKETING -->
+        <div class="card">
+          <span class="icon">📈</span>
+          <h3>Marketing Campaign Analysis</h3>
+          <div class="meta">Business Analytics • KPIs • Insights</div>
+          <p>
+            An end-to-end campaign analysis focused on customer acquisition and retention and actionable recommendations.
+          </p>
+          <div class="actions">
+            <a class="btn primary" href="Marketing_Campaign_Analysis.html" target="_blank" rel="noopener">Open HTML <span class="arrow">↗</span></a>
+          </div>
+        </div>
 
-  <!-- SPORTS 2 -->
-  <div class="card">
-    <span class="icon">📊</span>
-    <h3>Sports Analytics Case Study 2</h3>
-    <div class="meta">Feature Work • Evaluation • Findings</div>
-    <p>
-      A follow-up case study that highlights how modeling choices affect interpretation and outcomes.
-    </p>
-    <div class="actions">
-      <a class="btn primary" href="SportsAnalytics_Case_Study_2.html" target="_blank" rel="noopener">Open HTML</a>
-    </div>
-  </div>
+        <!-- SPORTS 1 -->
+        <div class="card">
+          <span class="icon">🏀</span>
+          <h3>Sports Analytics Case Study 1</h3>
+          <div class="meta">Exploratory Analysis • Modeling • Interpretation</div>
+          <p>
+            A structured sports analytics case study demonstrating data preparation and analytical reasoning.
+          </p>
+          <div class="actions">
+            <a class="btn primary" href="SportsAnalytics_Case_Study_1.html" target="_blank" rel="noopener">Open HTML <span class="arrow">↗</span></a>
+          </div>
+        </div>
 
-  <!-- SOCIAL -->
-  <div class="card">
-    <span class="icon">🧭</span>
-    <h3>Social Survey Analysis</h3>
-    <div class="meta">Real-World Data • Cleaning • Statistical Insight</div>
-    <p>
-      An applied survey analysis emphasizing data quality checks and interpretive findings.
-    </p>
-    <div class="actions">
-      <a class="btn primary" href="TheSocialSurveyAnalysis_Case_Study.html" target="_blank" rel="noopener">Open HTML</a>
-    </div>
-  </div>
+        <!-- SPORTS 2 -->
+        <div class="card">
+          <span class="icon">📊</span>
+          <h3>Sports Analytics Case Study 2</h3>
+          <div class="meta">Feature Work • Evaluation • Findings</div>
+          <p>
+            A follow-up case study that highlights how modeling choices affect interpretation and outcomes.
+          </p>
+          <div class="actions">
+            <a class="btn primary" href="SportsAnalytics_Case_Study_2.html" target="_blank" rel="noopener">Open HTML <span class="arrow">↗</span></a>
+          </div>
+        </div>
 
-</div>
-    </div>
+        <!-- SOCIAL -->
+        <div class="card">
+          <span class="icon">🧭</span>
+          <h3>Social Survey Analysis</h3>
+          <div class="meta">Real-World Data • Cleaning • Statistical Insight</div>
+          <p>
+            An applied survey analysis emphasizing data quality checks and interpretive findings.
+          </p>
+          <div class="actions">
+            <a class="btn primary" href="TheSocialSurveyAnalysis_Case_Study.html" target="_blank" rel="noopener">Open HTML <span class="arrow">↗</span></a>
+          </div>
+        </div>
+
+      </div>
+    </main>
 
     <footer>
-      <p>&copy; 2024–2026 Data Science Portfolio. Built and deployed on GitHub Pages.</p>
+      <p>© 2024–2026 Data Science Portfolio · Built and deployed on GitHub Pages</p>
     </footer>
   </div>
 </body>
